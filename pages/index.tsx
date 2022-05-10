@@ -5,14 +5,14 @@ import { useMe } from '../lib/hooks'
 import prisma from '../lib/prisma'
 
 const Home = ({ artists }) => {
-  const { user } = useMe()
+  const { user, isLoading } = useMe()
 
   return (
     <GradientLayout
       roundImage
-      color="gray"
+      color="green"
       subtitle="profile"
-      title="Steve Moss"
+      title={isLoading ? "Loading" : `${user?.firstname} ${user?.lastname}`}
       description={`${user?.playlistsCount} public playlists`}
       image="https://dl.dropboxusercontent.com/s/bgiv0ssz3xpotz9/peep.png?dl=0"
     >
